@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sapp/main/library/screens/home_screen/home_screen.dart';
-import 'package:sapp/main/library/screens/home_screen/home_viewmodel.dart';
+import 'package:sapp/main/screens/home_screen/home_screen.dart';
+import 'package:sapp/main/screens/home_screen/home_viewmodel.dart';
 
 void main() {
   runApp(SeriesApp());
@@ -16,7 +16,7 @@ class SeriesApp extends StatelessWidget {
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Series App',
+          title: 'ASSApp',
           home: HomeScreen()),
     );
   }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sapp/core/constants.dart';
 
-class SeriesBar extends StatelessWidget {
+class AssBar extends StatelessWidget {
   final Widget child;
   final double width;
-  SeriesBar({@required this.child, this.width});
+  AssBar({@required this.child, this.width});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class SeriesBar extends StatelessWidget {
           Radius.circular(kSmallRadius),
         ),
       ),
-      child: child,
+      child: Center(child: child),
     );
   }
 }

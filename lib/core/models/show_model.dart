@@ -5,7 +5,7 @@ class ShowModel {
   final List<dynamic> genres;
   final String status;
   final Map<String, dynamic> schedule;
-  final Map<String, dynamic> image;
+  final String image;
   final String summary;
 
   ShowModel(
@@ -26,7 +26,7 @@ class ShowModel {
       genres: json['genres'] as List,
       status: json['status'],
       schedule: json['schedule'] as Map,
-      image: json['image'] as Map,
+      image: json['image'] != null ? json['image']['medium'] : null,
       summary: json['summary'],
     );
   }
