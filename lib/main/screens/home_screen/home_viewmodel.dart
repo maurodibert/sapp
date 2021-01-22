@@ -15,6 +15,10 @@ class HomeViewModel extends ChangeNotifier {
   // GENERAL STATE
   TvMazeDB tvMazeDB = locator<TvMazeDB>();
 
+  int _page = 0;
+  List<ShowModel> _shows = [];
+  List<ShowModel> get shows => _shows;
+
   int _viewsState = 0;
   int get viewsState => _viewsState;
 
@@ -36,10 +40,6 @@ class HomeViewModel extends ChangeNotifier {
 
   //
   // LIST VIEW
-  int _page = 0;
-  List<ShowModel> _shows = [];
-  List<ShowModel> get shows => _shows;
-
   ScrollController _listViewScroll;
   ScrollController get listViewScroll => _listViewScroll;
 
