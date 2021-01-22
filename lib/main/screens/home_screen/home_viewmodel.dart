@@ -1,18 +1,26 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:sapp/core/models/show_model.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:sapp/main/screens/home_screen/views/list_view.dart';
 
 class HomeViewModel extends ChangeNotifier {
   HomeViewModel() {
     init();
   }
 
-  int _page = 0;
-  List<ShowModel> _shows = [];
-  List<ShowModel> get shows => _shows;
-  String _viewState = 'empty';
-  String get viewState => _viewState;
+  //
+  // GENERAL STATE
+  int _viewsState = 0;
+  int get viewsState => _viewsState;
+  List<Widget> _views = [
+    Center(
+      child: CircularProgressIndicator(),
+    ),
+    HomeScreenListView(),
+  ];
+  List<Widget> get views => _views;
 
   //
   // LIFE CYCLE - Initialization and disposing
@@ -20,6 +28,13 @@ class HomeViewModel extends ChangeNotifier {
     await fetchShows(_page);
   }
 
+  //
+  // LIST VIEW
+  int _page = 0;
+  List<ShowModel> _shows = [];
+  List<ShowModel> get shows => _shows;
+
+  // TODO: move to service
   // TODO: TEST
   /// Get **complete list of shows**
   /// respecting original pagination:
@@ -41,7 +56,7 @@ class HomeViewModel extends ChangeNotifier {
           for (var show in decodedBody) {
             _shows.add(ShowModel.fromJson(show));
           }
-          _viewState = 'list';
+          _viewsState = 1;
           notifyListeners();
         }
 
