@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/style.dart';
 import 'package:provider/provider.dart';
 import 'package:sapp/core/constants.dart';
+import 'package:sapp/core/models/episode_model.dart';
 import 'package:sapp/main/library/ass_loading.dart';
 import 'package:sapp/main/screens/show_screen/show_viewmodel.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -69,7 +70,39 @@ class ShowScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              // Text(model.show.schedule['days']),
+
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    if (model.show.genres.length > 0)
+                      for (String genre in model.show.genres)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Text(
+                            genre,
+                            style: kP.copyWith(
+                              color: Colors.yellow,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        )
+                  ],
+                ),
+              ),
+              if (model.episodes != null && model.episodes.length > 0)
+                Column(
+                  children: [
+                    for (EpisodeModel episode in model.episodes)
+                      Text(
+                        episode.name,
+                        style: kP.copyWith(
+                          color: Colors.yellow,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                  ],
+                ),
             ],
           ),
         ),

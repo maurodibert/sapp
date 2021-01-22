@@ -59,10 +59,10 @@ Widget buildBody(
       for (ShowModel show in model.shows)
         // TODO: make card component
         GestureDetector(
-          // onTap: () => print('show id: ${show.id}'),
           onTap: () async {
             showModel.setShowId(show.id);
-            await showModel.fetchShow(show.id);
+            showModel.fetchShow(show.id);
+            showModel.fetchEpisodes(show.id);
             Navigator.pushNamed(context, '/show');
           },
           child: Hero(

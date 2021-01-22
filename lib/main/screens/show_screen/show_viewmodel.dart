@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sapp/core/models/episode_model.dart';
 import 'package:sapp/core/models/show_model.dart';
 import 'package:sapp/core/services/tv_maze_db.dart';
 import 'package:sapp/service_lcoator.dart';
@@ -13,6 +14,8 @@ class ShowViewModel extends ChangeNotifier {
   int get showId => _showId;
   ShowModel _show;
   ShowModel get show => _show;
+  List<EpisodeModel> _episodes = [];
+  List<EpisodeModel> get episodes => _episodes;
 
   void setShowId(int id) {
     _showId = id;
@@ -28,7 +31,12 @@ class ShowViewModel extends ChangeNotifier {
     return _show;
   }
 
-  //
-  // LIFE CYCLE - Initialization and disposing
-  // init() async {}
+  Future<List<EpisodeModel>> fetchEpisodes(int id) async {
+    List<EpisodeModel> response = await tvMazeDB.getEpisodes(id);
+    if (response != null) {
+      _episodes = response;
+      notifyListeners();
+    }
+    return _episodes;
+  }
 }

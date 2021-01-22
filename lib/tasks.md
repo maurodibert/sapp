@@ -14,4 +14,4 @@ xxx tag both to make hero work
 
 
 # other todos
-- wired text coming back from show detail to list view
+- wired text coming back from show detail to list view / over
