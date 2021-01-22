@@ -5,8 +5,8 @@ x print when clicked on card of that
 xx navigate to show screen
 -- hero between
 xxx set id previous navigate route
---> extract db service
---> with id make get to db
---> get image
+xxx extract db service
+xxx with id make get to db
+xxx get image
 --> tag both to make hero work
 --> display specific show information

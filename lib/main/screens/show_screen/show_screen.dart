@@ -9,11 +9,21 @@ class ShowScreen extends StatelessWidget {
     ShowViewModel model = Provider.of<ShowViewModel>(context);
     return SafeArea(
       child: Scaffold(
-          body: model.show != null
-              ? Center(
-                  child: Text(model.show.name),
-                )
-              : LoadingWidget()),
+          body: model.show != null ? buildBody(model) : LoadingWidget()),
+    );
+  }
+
+  Widget buildBody(ShowViewModel model) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.black87,
+        image: DecorationImage(
+          colorFilter: ColorFilter.mode(
+              Colors.black.withOpacity(0.2), BlendMode.dstATop),
+          fit: BoxFit.cover,
+          image: NetworkImage(model.show.image),
+        ),
+      ),
     );
   }
 }
