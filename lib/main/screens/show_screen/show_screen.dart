@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/style.dart';
 import 'package:provider/provider.dart';
+import 'package:sapp/core/constants.dart';
 import 'package:sapp/main/library/ass_loading.dart';
 import 'package:sapp/main/screens/show_screen/show_viewmodel.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class ShowScreen extends StatelessWidget {
   @override
@@ -14,9 +17,38 @@ class ShowScreen extends StatelessWidget {
   }
 
   Widget buildBody(ShowViewModel model) {
+    Widget htmlSummary = Html(data: model.show.summary, style: {
+      "p": Style(
+          color: Colors.white,
+          padding: const EdgeInsets.all(0),
+          margin: const EdgeInsets.all(0),
+          alignment: Alignment.centerLeft),
+    });
+
     return Hero(
       tag: 'tag - ${model.show.id}',
       child: Container(
+        width: double.infinity,
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(model.show.name,
+                    style: kH3.copyWith(color: Colors.yellow)),
+              ),
+              htmlSummary,
+              // Text(model.show.summary),
+              // Text(),
+              // Text(),
+              // Text(),
+              // Text(),
+            ],
+          ),
+        ),
         decoration: BoxDecoration(
           color: Colors.black87,
           image: DecorationImage(

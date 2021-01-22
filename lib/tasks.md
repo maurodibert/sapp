@@ -10,3 +10,8 @@ xxx with id make get to db
 xxx get image
 xxx tag both to make hero work
 --> display specific show information
+
+
+
+# other todos
+- wired text coming back from show detail to list view
