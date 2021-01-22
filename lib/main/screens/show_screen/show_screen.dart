@@ -17,13 +17,16 @@ class ShowScreen extends StatelessWidget {
   }
 
   Widget buildBody(ShowViewModel model) {
-    Widget htmlSummary = Html(data: model.show.summary, style: {
-      "p": Style(
-          color: Colors.white,
-          padding: const EdgeInsets.all(0),
-          margin: const EdgeInsets.all(0),
-          alignment: Alignment.centerLeft),
-    });
+    Widget htmlSummary = Html(
+      data: model.show.summary,
+      style: {
+        "p": Style(
+            color: Colors.white,
+            padding: const EdgeInsets.all(0),
+            margin: const EdgeInsets.all(0),
+            alignment: Alignment.centerLeft),
+      },
+    );
 
     return Hero(
       tag: 'tag - ${model.show.id}',
@@ -32,7 +35,7 @@ class ShowScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(24.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
@@ -40,12 +43,33 @@ class ShowScreen extends StatelessWidget {
                 child: Text(model.show.name,
                     style: kH3.copyWith(color: Colors.yellow)),
               ),
+              // TODO: find how to get rid of internal padding and re do section extracting components
               htmlSummary,
-              // Text(model.show.summary),
-              // Text(),
-              // Text(),
-              // Text(),
-              // Text(),
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      Text(model.show.schedule['time'],
+                          style: kP.copyWith(
+                              color: Colors.yellow,
+                              fontWeight: FontWeight.bold)),
+                      if (model.show.schedule['days'] != null)
+                        for (String day in model.show.schedule['days'])
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(day,
+                                style: kP.copyWith(
+                                    color: Colors.yellow,
+                                    fontWeight: FontWeight.bold)),
+                          )
+                    ],
+                  ),
+                ),
+              ),
+              // Text(model.show.schedule['days']),
             ],
           ),
         ),
