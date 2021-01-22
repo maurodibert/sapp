@@ -65,34 +65,37 @@ Widget buildBody(
             await showModel.fetchShow(show.id);
             Navigator.pushNamed(context, '/show');
           },
-          child: Container(
-            // TODO: No image indicator
-            decoration: show.image != null
-                ? BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(show.image),
-                      fit: BoxFit.cover,
-                    ),
-                  )
-                : BoxDecoration(color: Colors.red),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                  color: Colors.black,
-                  width: double.infinity,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      show.name,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+          child: Hero(
+            tag: 'tag - ${show.id}',
+            child: Container(
+              // TODO: No image indicator
+              decoration: show.image != null
+                  ? BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(show.image),
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                  : BoxDecoration(color: Colors.red),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    color: Colors.black,
+                    width: double.infinity,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        show.name,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         )

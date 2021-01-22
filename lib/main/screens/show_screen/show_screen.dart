@@ -14,14 +14,17 @@ class ShowScreen extends StatelessWidget {
   }
 
   Widget buildBody(ShowViewModel model) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.black87,
-        image: DecorationImage(
-          colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.2), BlendMode.dstATop),
-          fit: BoxFit.cover,
-          image: NetworkImage(model.show.image),
+    return Hero(
+      tag: 'tag - ${model.show.id}',
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.black87,
+          image: DecorationImage(
+            colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.2), BlendMode.dstATop),
+            fit: BoxFit.cover,
+            image: NetworkImage(model.show.image),
+          ),
         ),
       ),
     );

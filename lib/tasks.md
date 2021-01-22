@@ -8,5 +8,5 @@ xxx set id previous navigate route
 xxx extract db service
 xxx with id make get to db
 xxx get image
---> tag both to make hero work
+xxx tag both to make hero work
 --> display specific show information
