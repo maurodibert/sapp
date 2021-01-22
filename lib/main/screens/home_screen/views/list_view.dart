@@ -4,15 +4,17 @@ import 'package:sapp/core/constants.dart';
 import 'package:sapp/core/models/show_model.dart';
 import 'package:sapp/main/library/ass_bar.dart';
 import 'package:sapp/main/screens/home_screen/home_viewmodel.dart';
+import 'package:sapp/main/screens/show_screen/show_viewmodel.dart';
 
 class HomeScreenListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeViewModel model = Provider.of<HomeViewModel>(context);
+    ShowViewModel showModel = Provider.of<ShowViewModel>(context);
 
     return Stack(
       children: [
-        buildBody(model),
+        buildBody(context, model, showModel),
         buildHeader(model),
         buildBottomNavBar(model)
       ],
@@ -46,7 +48,8 @@ Widget buildHeader(HomeViewModel model) {
       ));
 }
 
-Widget buildBody(HomeViewModel model) {
+Widget buildBody(
+    BuildContext context, HomeViewModel model, ShowViewModel showModel) {
   return GridView.count(
     controller: model.listViewScroll,
     mainAxisSpacing: 0,
@@ -56,7 +59,11 @@ Widget buildBody(HomeViewModel model) {
       for (ShowModel show in model.shows)
         // TODO: make card component
         GestureDetector(
-          onTap: () => print('show id: ${show.id}'),
+          // onTap: () => print('show id: ${show.id}'),
+          onTap: () {
+            showModel.setShowId(show.id);
+            Navigator.pushNamed(context, '/show');
+          },
           child: Container(
             // TODO: No image indicator
             decoration: show.image != null

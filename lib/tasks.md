@@ -2,5 +2,11 @@
 x what needs the query: id
 x print when clicked on card of that
 - when clicked:
--- navigate to show screen
--- display specific show
+xx navigate to show screen
+-- hero between
+xxx set id previous navigate route
+--> extract db service
+--> with id make get to db
+--> get image
+--> tag both to make hero work
+--> display specific show information

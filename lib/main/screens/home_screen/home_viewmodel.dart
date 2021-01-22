@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sapp/core/models/show_model.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'package:sapp/core/services/tv_maze_db.dart';
+import 'package:sapp/main/library/ass_loading.dart';
 import 'package:sapp/main/screens/home_screen/views/list_view.dart';
+import 'package:sapp/service_lcoator.dart';
 
 class HomeViewModel extends ChangeNotifier {
   HomeViewModel() {
@@ -12,12 +13,13 @@ class HomeViewModel extends ChangeNotifier {
 
   //
   // GENERAL STATE
+  TvMazeDB tvMazeDB = locator<TvMazeDB>();
+
   int _viewsState = 0;
   int get viewsState => _viewsState;
+
   List<Widget> _views = [
-    Center(
-      child: CircularProgressIndicator(),
-    ),
+    LoadingWidget(),
     HomeScreenListView(),
   ];
   List<Widget> get views => _views;
@@ -29,7 +31,7 @@ class HomeViewModel extends ChangeNotifier {
       initialScrollOffset: 0.0,
       keepScrollOffset: true,
     );
-    await fetchShows(_page);
+    _shows = await fetchShows(_page);
   }
 
   //
@@ -66,36 +68,13 @@ class HomeViewModel extends ChangeNotifier {
         duration: const Duration(milliseconds: 500), curve: Curves.ease);
   }
 
-  // TODO: move to service -> implement getIt
-  // TODO: TEST
-  /// Get **complete list of shows**
-  /// respecting original pagination:
-  /// _250 maximum per page_
-  Future fetchShows(int page) async {
-    String url = 'http://api.tvmaze.com/shows?page=$page';
-
-    try {
-      print('[HomeViewModel] Fetching shows page: $page');
-      var response = await http.get(url);
-
-      if (response.statusCode == 404) {
-        print('[HomeViewModel] There are no more pages');
-        return;
-      } else {
-        // TODO: final because it will perform better since I'll not change this?
-        final List decodedBody = await json.decode(response.body) as List;
-        if (decodedBody != null) {
-          for (var show in decodedBody) {
-            _shows.add(ShowModel.fromJson(show));
-          }
-          _viewsState = 1;
-          notifyListeners();
-        }
-
-        print('[HomeViewModel] Fetching shows ended');
-      }
-    } catch (e) {
-      throw Exception(e);
+  Future<List<ShowModel>> fetchShows(int page) async {
+    List<ShowModel> response = await tvMazeDB.fetchShows(page);
+    if (response != []) {
+      _shows = response;
+      _viewsState = 1;
+      notifyListeners();
     }
+    return _shows;
   }
 }
