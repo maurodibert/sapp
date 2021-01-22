@@ -25,6 +25,10 @@ class HomeViewModel extends ChangeNotifier {
   //
   // LIFE CYCLE - Initialization and disposing
   init() async {
+    _listViewScroll = ScrollController(
+      initialScrollOffset: 0.0,
+      keepScrollOffset: true,
+    );
     await fetchShows(_page);
   }
 
@@ -34,7 +38,31 @@ class HomeViewModel extends ChangeNotifier {
   List<ShowModel> _shows = [];
   List<ShowModel> get shows => _shows;
 
-  // TODO: move to service
+  ScrollController _listViewScroll;
+  ScrollController get listViewScroll => _listViewScroll;
+
+  /// advance respecting original api's pagination
+  Future advance() async {
+    _page += 1;
+    _shows = [];
+    await fetchShows(_page);
+  }
+
+  /// back respecting original api's pagination
+  Future back() async {
+    if (_page != 0) {
+      _page -= 1;
+      _shows = [];
+      await fetchShows(_page);
+    }
+  }
+
+  void _scrollToTop() {
+    _listViewScroll.animateTo(0.0,
+        duration: const Duration(milliseconds: 500), curve: Curves.ease);
+  }
+
+  // TODO: move to service -> implement getIt
   // TODO: TEST
   /// Get **complete list of shows**
   /// respecting original pagination:
@@ -57,6 +85,7 @@ class HomeViewModel extends ChangeNotifier {
             _shows.add(ShowModel.fromJson(show));
           }
           _viewsState = 1;
+          _scrollToTop();
           notifyListeners();
         }
 
@@ -64,22 +93,6 @@ class HomeViewModel extends ChangeNotifier {
       }
     } catch (e) {
       throw Exception(e);
-    }
-  }
-
-  /// advance respecting original api's pagination
-  Future advance() async {
-    _page += 1;
-    _shows = [];
-    await fetchShows(_page);
-  }
-
-  /// back respecting original api's pagination
-  Future back() async {
-    if (_page != 0) {
-      _page -= 1;
-      _shows = [];
-      await fetchShows(_page);
     }
   }
 }

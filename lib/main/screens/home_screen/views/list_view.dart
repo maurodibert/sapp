@@ -48,6 +48,7 @@ Widget buildHeader(HomeViewModel model) {
 
 Widget buildBody(HomeViewModel model) {
   return GridView.count(
+    controller: model.listViewScroll,
     mainAxisSpacing: 0,
     crossAxisSpacing: 0,
     crossAxisCount: 2,
