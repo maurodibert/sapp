@@ -55,34 +55,37 @@ Widget buildBody(HomeViewModel model) {
     children: [
       for (ShowModel show in model.shows)
         // TODO: make card component
-        Container(
-          // TODO: No image indicator
-          decoration: show.image != null
-              ? BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(show.image),
-                    fit: BoxFit.cover,
-                  ),
-                )
-              : BoxDecoration(color: Colors.red),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                color: Colors.black,
-                width: double.infinity,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    show.name,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+        GestureDetector(
+          onTap: () => print('show id: ${show.id}'),
+          child: Container(
+            // TODO: No image indicator
+            decoration: show.image != null
+                ? BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(show.image),
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                : BoxDecoration(color: Colors.red),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  color: Colors.black,
+                  width: double.infinity,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      show.name,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         )
     ],

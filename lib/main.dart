@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sapp/main/screens/home_screen/home_screen.dart';
 import 'package:sapp/main/screens/home_screen/home_viewmodel.dart';
+import 'package:sapp/main/screens/show_screen/show_screen.dart';
 
 void main() {
   runApp(SeriesApp());
@@ -15,9 +16,14 @@ class SeriesApp extends StatelessWidget {
         ChangeNotifierProvider<HomeViewModel>(create: (_) => HomeViewModel())
       ],
       child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Series App',
-          home: HomeScreen()),
+        debugShowCheckedModeBanner: false,
+        title: 'Series App',
+        initialRoute: '/',
+        routes: {
+          '/': (context) => HomeScreen(),
+          '/show': (context) => ShowScreen(),
+        },
+      ),
     );
   }
 }

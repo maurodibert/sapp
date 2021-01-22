@@ -46,6 +46,8 @@ class HomeViewModel extends ChangeNotifier {
     _page += 1;
     _shows = [];
     await fetchShows(_page);
+    _scrollToTop();
+    notifyListeners();
   }
 
   /// back respecting original api's pagination
@@ -55,6 +57,8 @@ class HomeViewModel extends ChangeNotifier {
       _shows = [];
       await fetchShows(_page);
     }
+    _scrollToTop();
+    notifyListeners();
   }
 
   void _scrollToTop() {
@@ -85,7 +89,6 @@ class HomeViewModel extends ChangeNotifier {
             _shows.add(ShowModel.fromJson(show));
           }
           _viewsState = 1;
-          _scrollToTop();
           notifyListeners();
         }
 
