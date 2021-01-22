@@ -11,6 +11,8 @@ class HomeViewModel extends ChangeNotifier {
   int _page = 0;
   List<ShowModel> _shows = [];
   List<ShowModel> get shows => _shows;
+  String _viewState = 'empty';
+  String get viewState => _viewState;
 
   //
   // LIFE CYCLE - Initialization and disposing
@@ -26,7 +28,7 @@ class HomeViewModel extends ChangeNotifier {
     String url = 'http://api.tvmaze.com/shows?page=$page';
 
     try {
-      print('[HomeViewModel] Fetching Shows - page: $page');
+      print('[HomeViewModel] Fetching shows page: $page');
       var response = await http.get(url);
 
       if (response.statusCode == 404) {
@@ -39,10 +41,11 @@ class HomeViewModel extends ChangeNotifier {
           for (var show in decodedBody) {
             _shows.add(ShowModel.fromJson(show));
           }
+          _viewState = 'list';
           notifyListeners();
         }
 
-        print('[HomeViewModel] Fetching Shows ended');
+        print('[HomeViewModel] Fetching shows ended');
       }
     } catch (e) {
       throw Exception(e);

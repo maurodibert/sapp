@@ -12,15 +12,20 @@ class HomeScreen extends StatelessWidget {
     return SafeArea(
       child:
           Scaffold(body: Consumer<HomeViewModel>(builder: (context, model, _) {
-        return model.shows.length > 0
-            ? Stack(
-                children: [
-                  buildBody(model),
-                  buildHeader(model),
-                  buildBottomNavBar(model)
-                ],
-              )
-            : Center(child: CircularProgressIndicator());
+        switch (model.viewState) {
+          case 'list':
+            return Stack(
+              children: [
+                buildBody(model),
+                buildHeader(model),
+                buildBottomNavBar(model)
+              ],
+            );
+            break;
+          case 'search':
+          default:
+            return Center(child: CircularProgressIndicator());
+        }
       })),
     );
   }
@@ -55,9 +60,10 @@ class HomeScreen extends StatelessWidget {
     return GridView.count(
       mainAxisSpacing: 0,
       crossAxisSpacing: 0,
-      crossAxisCount: 3,
+      crossAxisCount: 2,
       children: [
         for (ShowModel show in model.shows)
+          // TODO: make card component
           Container(
             // TODO: No image indicator
             decoration: show.image != null
@@ -69,8 +75,22 @@ class HomeScreen extends StatelessWidget {
                   )
                 : BoxDecoration(color: Colors.red),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(show.name),
+                Container(
+                  color: Colors.black,
+                  width: double.infinity,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      show.name,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           )
@@ -88,25 +108,24 @@ class HomeScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Expanded(
-                child: AssButton(
-                  isPrimary: true,
-                  text: "<",
-                  onTap: () => model.back(),
-                  radius: BorderRadius.only(
-                    bottomLeft: Radius.circular(kSmallRadius),
-                    topLeft: Radius.circular(kSmallRadius),
-                  ),
+                child: IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  color: Colors.black,
+                  onPressed: () => model.back(),
                 ),
               ),
               Expanded(
-                child: AssButton(
-                  isPrimary: true,
-                  text: ">",
-                  onTap: () => model.advance(),
-                  radius: BorderRadius.only(
-                    bottomRight: Radius.circular(kSmallRadius),
-                    topRight: Radius.circular(kSmallRadius),
-                  ),
+                child: IconButton(
+                  icon: Icon(Icons.search),
+                  color: Colors.black,
+                  onPressed: () => print('search pressed'),
+                ),
+              ),
+              Expanded(
+                child: IconButton(
+                  icon: Icon(Icons.arrow_forward),
+                  color: Colors.black,
+                  onPressed: () => model.advance(),
                 ),
               ),
             ],

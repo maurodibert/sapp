@@ -16,7 +16,7 @@ class SeriesApp extends StatelessWidget {
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'ASSApp',
+          title: 'Series App',
           home: HomeScreen()),
     );
   }
