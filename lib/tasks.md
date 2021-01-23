@@ -1,6 +1,7 @@
 # tasks
 - display specific show information
--- display episodes by season
+xx display episodes by season
+-- show episode info in Dialog
 
 
 

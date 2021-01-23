@@ -20,11 +20,26 @@ class ShowViewModel extends ChangeNotifier {
   List<SeasonModel> _seasons = [];
   List<SeasonModel> get seasons => _seasons;
 
+  //
+  // EPISODE DETAILS
+  bool _isDetailsVisible = false;
+  bool get isDetailsVisible => _isDetailsVisible;
+  EpisodeModel _episode;
+  EpisodeModel get episode => _episode;
+
+  void toggleDetails(int number) {
+    _episode = _episodes[number - 1];
+    _isDetailsVisible = !_isDetailsVisible;
+    notifyListeners();
+  }
+
   void setShowId(int id) {
     _showId = id;
     notifyListeners();
   }
 
+  //
+  // General Fetching
   Future<ShowModel> fetchShow(int id) async {
     ShowModel response = await tvMazeDB.getShow(id);
     if (response != null) {
