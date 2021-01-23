@@ -68,7 +68,10 @@ class ShowScreen extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          Text(model.show.schedule['time'],
+                          Text(
+                              model.show.schedule['time'] == ''
+                                  ? '(Hour not available)'
+                                  : model.show.schedule['time'],
                               style: kP.copyWith(
                                   color: Colors.yellow,
                                   fontWeight: FontWeight.bold)),
@@ -76,7 +79,7 @@ class ShowScreen extends StatelessWidget {
                             for (String day in model.show.schedule['days'])
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Text(day,
+                                child: Text(day.trim(),
                                     style: kP.copyWith(
                                         color: Colors.yellow,
                                         fontWeight: FontWeight.bold)),
@@ -129,9 +132,19 @@ class ShowScreen extends StatelessWidget {
                                 ),
                                 for (EpisodeModel episode in model.episodes)
                                   if (episode.season == season.number)
-                                    Text(episode.name,
-                                        style:
-                                            kP.copyWith(color: Colors.white)),
+                                    Row(
+                                      children: [
+                                        Text(episode.number.toString(),
+                                            style:
+                                                kP.copyWith(color: Colors.red)),
+                                        SizedBox(
+                                          width: 8,
+                                        ),
+                                        Text(episode.name,
+                                            style: kP.copyWith(
+                                                color: Colors.white)),
+                                      ],
+                                    ),
                                 SizedBox(
                                   height: 20,
                                 ),
