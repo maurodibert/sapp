@@ -48,12 +48,15 @@ class ShowScreen extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(24.0),
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(
+                    height: 24,
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(model.show.name,
@@ -79,7 +82,7 @@ class ShowScreen extends StatelessWidget {
                             for (String day in model.show.schedule['days'])
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Text(day.trim(),
+                                child: Text(day,
                                     style: kP.copyWith(
                                         color: Colors.yellow,
                                         fontWeight: FontWeight.bold)),
@@ -132,18 +135,28 @@ class ShowScreen extends StatelessWidget {
                                 ),
                                 for (EpisodeModel episode in model.episodes)
                                   if (episode.season == season.number)
-                                    Row(
-                                      children: [
-                                        Text(episode.number.toString(),
-                                            style:
-                                                kP.copyWith(color: Colors.red)),
-                                        SizedBox(
-                                          width: 8,
+                                    MaterialButton(
+                                      onPressed: () => print('tapped'),
+                                      child: SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              episode.number.toString(),
+                                              style: kP.copyWith(
+                                                color: Colors.red,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: 8,
+                                            ),
+                                            Text(episode.name,
+                                                style: kP.copyWith(
+                                                    color: Colors.white)),
+                                          ],
                                         ),
-                                        Text(episode.name,
-                                            style: kP.copyWith(
-                                                color: Colors.white)),
-                                      ],
+                                      ),
                                     ),
                                 SizedBox(
                                   height: 20,
