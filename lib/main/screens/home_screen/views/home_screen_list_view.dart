@@ -62,6 +62,7 @@ Widget buildBody(
           onTap: () async {
             showModel.setShowId(show.id);
             showModel.fetchShow(show.id);
+            showModel.fetchEpisodes(show.id);
             showModel.fetchSeasons(show.id);
             Navigator.pushNamed(context, '/show');
           },

@@ -14,3 +14,6 @@ class SeasonModel {
     );
   }
 }
+
+//  http://api.tvmaze.com/shows/1/seasons/1?embed=seasons
+//  http://api.tvmaze.com/shows/1

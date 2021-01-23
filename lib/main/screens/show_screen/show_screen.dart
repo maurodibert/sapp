@@ -114,11 +114,28 @@ class ShowScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           for (SeasonModel season in model.seasons)
-                            Text(
-                              season.number.toString(),
-                              style: kP.copyWith(
-                                color: Colors.yellow,
-                              ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  season.number.toString(),
+                                  style: kP.copyWith(
+                                    color: Colors.yellow,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                for (EpisodeModel episode in model.episodes)
+                                  if (episode.season == season.number)
+                                    Text(episode.name,
+                                        style:
+                                            kP.copyWith(color: Colors.white)),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                              ],
                             ),
                         ],
                       ),
