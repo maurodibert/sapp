@@ -27,8 +27,8 @@ class ShowViewModel extends ChangeNotifier {
   EpisodeModel _episode;
   EpisodeModel get episode => _episode;
 
-  void toggleDetails(int number) {
-    _episode = _episodes[number - 1];
+  void toggleDetails([int number]) {
+    if (number != null) _episode = _episodes[number - 1];
     _isDetailsVisible = !_isDetailsVisible;
     notifyListeners();
   }
