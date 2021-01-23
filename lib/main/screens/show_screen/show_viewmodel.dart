@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sapp/core/models/episode_model.dart';
+import 'package:sapp/core/models/season_model.dart';
 import 'package:sapp/core/models/show_model.dart';
 import 'package:sapp/core/services/tv_maze_db.dart';
 import 'package:sapp/service_lcoator.dart';
@@ -16,6 +17,8 @@ class ShowViewModel extends ChangeNotifier {
   ShowModel get show => _show;
   List<EpisodeModel> _episodes = [];
   List<EpisodeModel> get episodes => _episodes;
+  List<SeasonModel> _seasons = [];
+  List<SeasonModel> get seasons => _seasons;
 
   void setShowId(int id) {
     _showId = id;
@@ -38,5 +41,14 @@ class ShowViewModel extends ChangeNotifier {
       notifyListeners();
     }
     return _episodes;
+  }
+
+  Future<List<SeasonModel>> fetchSeasons(int id) async {
+    List<SeasonModel> response = await tvMazeDB.getSeasons(id);
+    if (response != null) {
+      _seasons = response;
+      notifyListeners();
+    }
+    return _seasons;
   }
 }

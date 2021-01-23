@@ -1,5 +1,3 @@
-import 'package:sapp/core/models/episode_model.dart';
-
 class ShowModel {
   final int id;
   final String url;
@@ -9,7 +7,6 @@ class ShowModel {
   final Map<String, dynamic> schedule;
   final String image;
   final String summary;
-  final List<EpisodeModel> episodes;
 
   ShowModel({
     this.id,
@@ -20,7 +17,6 @@ class ShowModel {
     this.schedule,
     this.image,
     this.summary,
-    this.episodes,
   });
 
   factory ShowModel.fromJson(Map<String, dynamic> json) {
@@ -33,7 +29,6 @@ class ShowModel {
       schedule: json['schedule'] as Map,
       image: json['image'] != null ? json['image']['medium'] : null,
       summary: json['summary'],
-      episodes: json['episodes'] as List,
     );
   }
 }

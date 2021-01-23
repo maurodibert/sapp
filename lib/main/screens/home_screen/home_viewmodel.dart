@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sapp/core/models/show_model.dart';
 import 'package:sapp/core/services/tv_maze_db.dart';
 import 'package:sapp/main/library/ass_loading.dart';
-import 'package:sapp/main/screens/home_screen/views/list_view.dart';
+import 'package:sapp/main/screens/home_screen/views/home_screen_list_view.dart';
 import 'package:sapp/service_lcoator.dart';
 
 class HomeViewModel extends ChangeNotifier {

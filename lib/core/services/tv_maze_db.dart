@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:sapp/core/models/episode_model.dart';
+import 'package:sapp/core/models/season_model.dart';
 import 'package:sapp/core/models/show_model.dart';
 
 // TODO: TEST
@@ -63,7 +64,7 @@ class TvMazeDB {
     String url = 'http://api.tvmaze.com/shows/$id/episodes';
 
     try {
-      print('[ ShowViewModel ] Fetching show episodes:');
+      print('[ ShowViewModel ] Fetching show $id episodes:');
       var response = await http.get(url);
 
       final List decodedBody = await json.decode(response.body) as List;
@@ -79,5 +80,29 @@ class TvMazeDB {
     }
 
     return _episodes;
+  }
+
+  /// Get **seasons of specific show**
+  Future<List<SeasonModel>> getSeasons(int id) async {
+    List<SeasonModel> _seasons = [];
+    String url = 'http://api.tvmaze.com/shows/$id/seasons';
+
+    try {
+      print('[ ShowViewModel ] Fetching show $id seasons');
+      var response = await http.get(url);
+
+      final List decodedBody = await json.decode(response.body) as List;
+
+      if (decodedBody != null) {
+        for (Map season in decodedBody) {
+          _seasons.add(SeasonModel.fromJson(season));
+        }
+      }
+      print('[ ShowViewModel ] Fetched seasons');
+    } catch (e) {
+      throw Exception(e);
+    }
+
+    return _seasons;
   }
 }
