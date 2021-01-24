@@ -6,7 +6,6 @@ class SeriousCard extends StatelessWidget {
   final String tag;
   final String image;
   final String name;
-  final double nameWidth;
   final double width;
   final double height;
 
@@ -16,7 +15,6 @@ class SeriousCard extends StatelessWidget {
     @required this.tag,
     @required this.image,
     @required this.name,
-    this.nameWidth,
     this.width,
     this.height,
   }) : super(key: key);
@@ -34,8 +32,11 @@ class SeriousCard extends StatelessWidget {
                 ? Container(
                     color: Colors.black,
                     child: Center(
-                      child: Text('No available image',
-                          style: kP.copyWith(color: Colors.white)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text('Not available',
+                            style: kP.copyWith(color: Colors.white)),
+                      ),
                     ),
                   )
                 : Container(
@@ -54,7 +55,7 @@ class SeriousCard extends StatelessWidget {
                       children: [
                         Container(
                           color: Colors.black,
-                          width: nameWidth ?? double.infinity,
+                          width: double.infinity,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(

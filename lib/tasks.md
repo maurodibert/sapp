@@ -1,5 +1,7 @@
 # tasks
 - search
+-- clean input
+-- clean view
 
 # backlog
 - apk working

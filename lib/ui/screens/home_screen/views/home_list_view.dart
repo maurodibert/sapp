@@ -46,26 +46,27 @@ Widget buildBody(
     crossAxisCount: 2,
     children: [
       for (ShowModel show in model.shows)
-        SeriousCard(
-          onTap: () async {
-            // important to ensure Hero animation
-            // not showing previous fetched show
-            showModel.setShowId(show.id);
-            await showModel.fetchShow(show.id);
-            showModel.fetchEpisodes(show.id);
-            showModel.fetchSeasons(show.id);
-            // used for manage transition's duration
-            Navigator.push(
-              context,
-              PageRouteBuilder(
-                  transitionDuration: Duration(milliseconds: 800),
-                  pageBuilder: (_, __, ___) => ShowScreen()),
-            );
-          },
-          tag: 'tag - ${show.id}',
-          image: show.image,
-          name: show.name,
-        ),
+        if (show.image != null && show.name != null)
+          SeriousCard(
+            onTap: () async {
+              // important to ensure Hero animation
+              // not showing previous fetched show
+              showModel.setShowId(show.id);
+              await showModel.fetchShow(show.id);
+              showModel.fetchEpisodes(show.id);
+              showModel.fetchSeasons(show.id);
+              // used for manage transition's duration
+              Navigator.push(
+                context,
+                PageRouteBuilder(
+                    transitionDuration: Duration(milliseconds: 800),
+                    pageBuilder: (_, __, ___) => ShowScreen()),
+              );
+            },
+            tag: 'tag - ${show.id}',
+            image: show.image,
+            name: show.name,
+          ),
     ],
   );
 }
