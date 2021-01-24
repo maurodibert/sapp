@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:sapp/core/constants.dart';
 
-class SCard extends StatelessWidget {
+class SeriousCard extends StatelessWidget {
   final Function onTap;
   final String tag;
   final String image;
   final String name;
+  final double nameWidth;
+  final double width;
+  final double height;
 
-  const SCard(
-      {Key key,
-      @required this.onTap,
-      @required this.tag,
-      @required this.image,
-      @required this.name})
-      : super(key: key);
+  const SeriousCard({
+    Key key,
+    @required this.onTap,
+    @required this.tag,
+    @required this.image,
+    @required this.name,
+    this.nameWidth,
+    this.width,
+    this.height,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +39,8 @@ class SCard extends StatelessWidget {
                     ),
                   )
                 : Container(
+                    width: width ?? null,
+                    height: height ?? null,
                     decoration: image != null
                         ? BoxDecoration(
                             image: DecorationImage(
@@ -46,7 +54,7 @@ class SCard extends StatelessWidget {
                       children: [
                         Container(
                           color: Colors.black,
-                          width: double.infinity,
+                          width: nameWidth ?? double.infinity,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(

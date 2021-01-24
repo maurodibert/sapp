@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // COLORS
 // Primary Palette
 const kYellow = Color(0xFFFFC70D);
-const kOrangeAccent = Color(0xFFF89F00);
+const kOrgange = Color(0xFFF89F00);
 
 // General Palette
 const kError = Color(0xFFF64949);

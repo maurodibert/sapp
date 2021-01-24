@@ -46,7 +46,7 @@ Widget buildBody(
     crossAxisCount: 2,
     children: [
       for (ShowModel show in model.shows)
-        SCard(
+        SeriousCard(
           onTap: () async {
             // important to ensure Hero animation
             // not showing previous fetched show

@@ -14,11 +14,11 @@ class TvMazeDB {
     String url = 'http://api.tvmaze.com/shows?page=$page';
 
     try {
-      print('[ HomeViewModel ] Fetching shows page: $page');
+      print(' [ TV Maze DB Service ] Fetching shows page: $page');
       var response = await http.get(url);
 
       if (response.statusCode == 404) {
-        print('[ HomeViewModel ] There are no more pages');
+        print('[ TV Maze DB Service ] There are no more pages');
         return _shows;
       } else {
         // TODO: final because it will perform better since I'll not change this?
@@ -29,7 +29,7 @@ class TvMazeDB {
           }
         }
 
-        print('[ HomeViewModel ] Fetching shows ended');
+        print('[ TV Maze DB Service ] Fetching shows ended');
         return _shows;
       }
     } catch (e) {
@@ -43,14 +43,14 @@ class TvMazeDB {
     String url = 'http://api.tvmaze.com/shows/$id';
 
     try {
-      print('[ ShowViewModel ] Fetching show with id: $id');
+      print('[ TV Maze DB Service ] Fetching show with id: $id');
       var response = await http.get(url);
 
       final Map decodedBody = await json.decode(response.body) as Map;
       if (decodedBody != null) {
         _show = ShowModel.fromJson(decodedBody);
       }
-      print('[ ShowViewModel ] Fetched show');
+      print('[ TV Maze DB Service ] Fetched show');
     } catch (e) {
       throw Exception(e);
     }
@@ -64,7 +64,7 @@ class TvMazeDB {
     String url = 'http://api.tvmaze.com/shows/$id/episodes';
 
     try {
-      print('[ ShowViewModel ] Fetching show $id episodes:');
+      print('[ TV Maze DB Service ] Fetching show $id episodes:');
       var response = await http.get(url);
 
       final List decodedBody = await json.decode(response.body) as List;
@@ -74,7 +74,7 @@ class TvMazeDB {
           _episodes.add(EpisodeModel.fromJson(episode));
         }
       }
-      print('[ ShowViewModel ] Fetched episodes');
+      print('[ TV Maze DB Service ] Fetched episodes');
     } catch (e) {
       throw Exception(e);
     }
@@ -88,7 +88,7 @@ class TvMazeDB {
     String url = 'http://api.tvmaze.com/shows/$id/seasons';
 
     try {
-      print('[ ShowViewModel ] Fetching show $id seasons');
+      print('[ TV Maze DB Service ] Fetching show $id seasons');
       var response = await http.get(url);
 
       final List decodedBody = await json.decode(response.body) as List;
@@ -98,11 +98,34 @@ class TvMazeDB {
           _seasons.add(SeasonModel.fromJson(season));
         }
       }
-      print('[ ShowViewModel ] Fetched seasons');
+      print('[ TV Maze DB Service ] Fetched seasons');
     } catch (e) {
       throw Exception(e);
     }
 
     return _seasons;
+  }
+
+  /// Get **a list of shows based on a query**:
+  Future<List<ShowModel>> queryShows(String query) async {
+    List<ShowModel> _shows = [];
+    String url = 'http://api.tvmaze.com/search/shows?q=$query';
+
+    try {
+      print('[ TV Maze DB Service ] Fetching shows for query: $query');
+      var response = await http.get(url);
+
+      final List decodedBody = await json.decode(response.body) as List;
+      if (decodedBody != null) {
+        for (var show in decodedBody) {
+          _shows.add(ShowModel.fromJson(show['show']));
+        }
+      }
+
+      print('[ TV Maze DB Service ] Fetching shows ended');
+      return _shows;
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 }

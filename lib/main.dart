@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sapp/core/constants.dart';
 import 'package:sapp/ui/screens/home_screen/home_screen.dart';
 import 'package:sapp/ui/screens/home_screen/home_viewmodel.dart';
 import 'package:sapp/ui/screens/search_screen/search_screen.dart';
@@ -32,6 +33,12 @@ class SeriousApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Serious, a series app',
         initialRoute: '/',
+        theme: ThemeData(
+          primaryColor: kYellow,
+          accentColor: kOrgange,
+          cursorColor: kYellow,
+          focusColor: kYellow,
+        ),
         routes: {
           '/': (context) => HomeScreen(),
           '/show': (context) => ShowScreen(),
