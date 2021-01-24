@@ -7,6 +7,7 @@ import 'package:sapp/ui/library/s_card.dart';
 import 'package:sapp/ui/library/s_header.dart';
 import 'package:sapp/ui/screens/home_screen/home_viewmodel.dart';
 import 'package:sapp/ui/screens/search_screen/search_screen.dart';
+import 'package:sapp/ui/screens/search_screen/search_viewmodel.dart';
 import 'package:sapp/ui/screens/show_screen/show_screen.dart';
 import 'package:sapp/ui/screens/show_screen/show_viewmodel.dart';
 
@@ -15,6 +16,7 @@ class HomeListView extends StatelessWidget {
   Widget build(BuildContext context) {
     HomeViewModel model = Provider.of<HomeViewModel>(context);
     ShowViewModel showModel = Provider.of<ShowViewModel>(context);
+    SearchViewModel searchModel = Provider.of<SearchViewModel>(context);
 
     return Stack(
       children: [
@@ -29,8 +31,9 @@ class HomeListView extends StatelessWidget {
         Align(
           alignment: Alignment.bottomCenter,
           child: Padding(
-              padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
-              child: buildBottomNavBar(model, context)),
+            padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
+            child: buildBottomNavBar(context, model, searchModel),
+          ),
         ),
       ],
     );
@@ -71,7 +74,11 @@ Widget buildBody(
   );
 }
 
-Widget buildBottomNavBar(HomeViewModel model, BuildContext context) {
+Widget buildBottomNavBar(
+  BuildContext context,
+  HomeViewModel model,
+  SearchViewModel searchModel,
+) {
   return SeriousBar(
     child: Row(
       mainAxisSize: MainAxisSize.min,
@@ -90,15 +97,17 @@ Widget buildBottomNavBar(HomeViewModel model, BuildContext context) {
               child: Material(
                 type: MaterialType.transparency,
                 child: IconButton(
-                  icon: Icon(Icons.search),
-                  color: Colors.black,
-                  onPressed: () => Navigator.push(
-                    context,
-                    PageRouteBuilder(
-                        transitionDuration: Duration(milliseconds: 800),
-                        pageBuilder: (_, __, ___) => SearchScreen()),
-                  ),
-                ),
+                    icon: Icon(Icons.search),
+                    color: Colors.black,
+                    onPressed: () async {
+                      searchModel.cleanSearch();
+                      return Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                            transitionDuration: Duration(milliseconds: 800),
+                            pageBuilder: (_, __, ___) => SearchScreen()),
+                      );
+                    }),
               ),
             ),
           ),

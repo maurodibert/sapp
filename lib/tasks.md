@@ -1,15 +1,18 @@
 # tasks
-- search
--- clean input
--- clean view
+x search
+xx clean input
+xx clean view
+-- egg header
+-- splash
+- apk working
+- repo and readme
+-- cómo se corre
+-- presentación de la estructura
+-- toma de decisiones específicas: validaciones, etc.
+-- proceso de boceto y logo
+- beautiful
 
 # backlog
-- apk working
-- beautiful
--- mini eggs as buttons
--- splash
--- animations
-- repo and readme
 - pin & fingerprint with package
 - favorites made simple
 

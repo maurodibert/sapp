@@ -55,8 +55,11 @@ class SearchScreen extends StatelessWidget {
                           type: MaterialType.transparency,
                           child: IconButton(
                             icon: Icon(Icons.search, color: Colors.white),
-                            onPressed: () => model
-                                .queryShows(model.textFieldController.text),
+                            onPressed: () async {
+                              await model
+                                  .queryShows(model.textFieldController.text);
+                              model.textFieldController.clear();
+                            },
                           ),
                         ),
                       )),
@@ -70,9 +73,10 @@ class SearchScreen extends StatelessWidget {
                     }
                     return null;
                   },
-                  onFieldSubmitted: (value) {
+                  onFieldSubmitted: (value) async {
                     if (model.formKey.currentState.validate()) {
-                      return model.queryShows(model.textFieldController.text);
+                      await model.queryShows(model.textFieldController.text);
+                      model.textFieldController.clear();
                     }
                   }),
             )

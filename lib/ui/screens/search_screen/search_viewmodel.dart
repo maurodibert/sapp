@@ -5,10 +5,6 @@ import 'package:sapp/core/services/tv_maze_db.dart';
 import 'package:sapp/service_lcoator.dart';
 
 class SearchViewModel extends ChangeNotifier {
-  SearchViewModel() {
-    // init();
-  }
-
   //
   // INJECTIONS
   TvMazeDB tvMazeDB = locator<TvMazeDB>();
@@ -22,10 +18,12 @@ class SearchViewModel extends ChangeNotifier {
 
   List<ShowModel> _shows;
   List<ShowModel> get shows => _shows;
+
   //
   // LIFE CYCLE - Initialization and disposing
-  init() async {}
 
+  //
+  // SERVICE COMMUNICATION
   Future<List<ShowModel>> queryShows(String query) async {
     List<ShowModel> response = await tvMazeDB.queryShows(query);
     if (response != []) {
@@ -33,5 +31,11 @@ class SearchViewModel extends ChangeNotifier {
       notifyListeners();
     }
     return _shows;
+  }
+
+  void cleanSearch() {
+    _shows = [];
+    _textFieldController.clear();
+    notifyListeners();
   }
 }

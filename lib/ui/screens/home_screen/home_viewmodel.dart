@@ -70,6 +70,8 @@ class HomeViewModel extends ChangeNotifier {
         duration: const Duration(milliseconds: 500), curve: Curves.ease);
   }
 
+  //
+  // SERVICE COMMUNICATION
   Future<List<ShowModel>> fetchShows(int page) async {
     List<ShowModel> response = await tvMazeDB.fetchShows(page);
     if (response != []) {

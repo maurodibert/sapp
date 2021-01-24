@@ -41,7 +41,7 @@ class ShowViewModel extends ChangeNotifier {
   }
 
   //
-  // General Fetching
+  // SERVICE COMMUNICATION
   Future<ShowModel> fetchShow(int id) async {
     ShowModel response = await tvMazeDB.getShow(id);
     if (response != null) {

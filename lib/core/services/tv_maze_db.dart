@@ -4,7 +4,6 @@ import 'package:sapp/core/models/episode_model.dart';
 import 'package:sapp/core/models/season_model.dart';
 import 'package:sapp/core/models/show_model.dart';
 
-// TODO: TEST
 class TvMazeDB {
   /// Get **complete list of shows**
   /// respecting original pagination:
@@ -14,14 +13,13 @@ class TvMazeDB {
     String url = 'http://api.tvmaze.com/shows?page=$page';
 
     try {
-      print(' [ TV Maze DB Service ] Fetching shows page: $page');
+      print('[ TV Maze DB Service ] Fetching shows page: $page');
       var response = await http.get(url);
 
       if (response.statusCode == 404) {
         print('[ TV Maze DB Service ] There are no more pages');
         return _shows;
       } else {
-        // TODO: final because it will perform better since I'll not change this?
         final List decodedBody = await json.decode(response.body) as List;
         if (decodedBody != null) {
           for (var show in decodedBody) {
