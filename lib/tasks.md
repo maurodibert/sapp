@@ -5,11 +5,11 @@ xx clean view
 xx egg header
 xx splash
 xx icon
-- apk working
+xx apk working
 - repo and readme
--- cómo se corre
--- presentación de la estructura
--- toma de decisiones específicas: validaciones, etc.
+xx cómo se corre
+xx presentación de la estructura
+xx toma de decisiones específicas: validaciones, etc.
 -- proceso de boceto y logo
 - beautiful
 

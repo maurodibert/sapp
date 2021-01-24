@@ -1,16 +1,59 @@
-# sapp
+# Seri[ou]s
+An application for listing TV series, using the API provided by the TVMaze
+website.
 
-A new Flutter project.
 
-## Getting Started
+## How to Use 
+**Step 1:**
+Download or clone this repo by using the link below:
+```
+https://github.com/...
+```
+**Step 2:**
+Go to project root and execute the following command in console to get the required dependencies: 
+```
+flutter pub get 
+```
+**Step 3:**
+Run the app
+```
+flutter run
+```
 
-This project is a starting point for a Flutter application.
+## Libraries & Tools Used
+* Provider
+* Get It, for dependency injection
+* Flutter HTML for rich HTML text
 
-A few resources to get you started if this is your first Flutter project:
+## Structure
+With the separation of concerns in mind, I've built the application applying an MVVM architectural pattern, following the next folder structure:
+```
+lib
+└── core
+    └── helpers
+    └── models
+    └── services
+    constants
+└── ui
+    └── library: reusable components
+    └── screens
+        └── views: particular UI
+        screen: UI
+        viewModel: logic
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+```
+At the same time, the code is categorized to make the maintenance easier and pleasurable; 
+from scratch, perhaps, could be a little bit cumbersome for an app this small, but as soon as it gets bigger
+will make for devs, life much more comfortable. 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Extra Features
+* UI - UX Design
+* Splash Screen
+* Icons
+
+## Decisions and considerations
+**Why those extra features**: I've decided to the *splash screen* and *the icons* as extra features, not following the challenge prioritization because I couldn't devote any more than 20 hours in total. In the end, both elements are a fast thing to develop and with a high-value output, letting me give a feeling of a completed app.
+
+**Time devoted to UI/UX basic design**: I think one of the most important aspects of an app is the look and feeling; it's what makes an user, connect with the app and wanting to stay more and come back. Since I had a lot of previous technical background in creative arts, I use them as a way of liberate and decompress.
+
