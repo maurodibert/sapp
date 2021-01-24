@@ -2,14 +2,8 @@
 <!-- Modify this file to customize your launch splash screen -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
-
-        <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
-        <solid android:color="#475985"/>
-        </shape>
-    </item>
-    <item>
         <bitmap
-        android:gravity="fill"
-        android:src="@mipmap/drawable"/>
+            android:gravity="fill"
+            android:src="@mipmap/splash"/>
     </item>
 </layer-list>
