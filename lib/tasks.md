@@ -2,8 +2,9 @@
 x search
 xx clean input
 xx clean view
--- egg header
+xx egg header
 -- splash
+-- icon
 - apk working
 - repo and readme
 -- cómo se corre
