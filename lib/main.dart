@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sapp/ui/screens/home_screen/home_screen.dart';
 import 'package:sapp/ui/screens/home_screen/home_viewmodel.dart';
+import 'package:sapp/ui/screens/search_screen/search_screen.dart';
+import 'package:sapp/ui/screens/search_screen/search_viewmodel.dart';
 import 'package:sapp/ui/screens/show_screen/show_screen.dart';
 import 'package:sapp/ui/screens/show_screen/show_viewmodel.dart';
 import 'package:sapp/service_lcoator.dart';
@@ -22,6 +24,9 @@ class SeriousApp extends StatelessWidget {
         ChangeNotifierProvider<ShowViewModel>(
           create: (_) => ShowViewModel(),
         ),
+        ChangeNotifierProvider<SearchViewModel>(
+          create: (_) => SearchViewModel(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -30,6 +35,7 @@ class SeriousApp extends StatelessWidget {
         routes: {
           '/': (context) => HomeScreen(),
           '/show': (context) => ShowScreen(),
+          '/search': (context) => SearchScreen(),
         },
       ),
     );

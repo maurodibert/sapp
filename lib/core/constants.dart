@@ -39,6 +39,8 @@ double kBigRadius = 40;
 double kMediumRadius = 16;
 double kSmallRadius = 10;
 
+String kHeroSearchTag = 'Search Icon';
+
 //
 // FONTS - General
 TextStyle kH1 = TextStyle(

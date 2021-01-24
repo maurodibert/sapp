@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sapp/core/constants.dart';
 import 'package:sapp/core/models/show_model.dart';
 import 'package:sapp/ui/library/s_bar.dart';
 import 'package:sapp/ui/library/s_card.dart';
 import 'package:sapp/ui/library/s_header.dart';
 import 'package:sapp/ui/screens/home_screen/home_viewmodel.dart';
+import 'package:sapp/ui/screens/search_screen/search_screen.dart';
 import 'package:sapp/ui/screens/show_screen/show_screen.dart';
 import 'package:sapp/ui/screens/show_screen/show_viewmodel.dart';
 
@@ -28,7 +30,7 @@ class HomeListView extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           child: Padding(
               padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
-              child: buildBottomNavBar(model)),
+              child: buildBottomNavBar(model, context)),
         ),
       ],
     );
@@ -68,7 +70,7 @@ Widget buildBody(
   );
 }
 
-Widget buildBottomNavBar(HomeViewModel model) {
+Widget buildBottomNavBar(HomeViewModel model, BuildContext context) {
   return SeriousBar(
     child: Row(
       mainAxisSize: MainAxisSize.min,
@@ -82,10 +84,21 @@ Widget buildBottomNavBar(HomeViewModel model) {
         ),
         Expanded(
           child: Container(
-            child: IconButton(
-              icon: Icon(Icons.search),
-              color: Colors.black,
-              onPressed: () => print('search pressed'),
+            child: Hero(
+              tag: kHeroSearchTag,
+              child: Material(
+                type: MaterialType.transparency,
+                child: IconButton(
+                  icon: Icon(Icons.search),
+                  color: Colors.black,
+                  onPressed: () => Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                        transitionDuration: Duration(milliseconds: 800),
+                        pageBuilder: (_, __, ___) => SearchScreen()),
+                  ),
+                ),
+              ),
             ),
           ),
         ),

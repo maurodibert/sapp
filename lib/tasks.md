@@ -1,17 +1,7 @@
 # tasks
-- refactor & bugs
--- no going home after clicked on show
-
-
-
-
-
-
-
-
+- search
 
 # backlog
-- search
 - apk working
 - beautiful
 -- mini eggs as buttons
