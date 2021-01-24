@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:sapp/core/constants.dart';
 import 'package:sapp/core/models/episode_model.dart';
 import 'package:sapp/core/models/season_model.dart';
-import 'package:sapp/main/library/ass_loading.dart';
-import 'package:sapp/main/screens/show_screen/show_viewmodel.dart';
+import 'package:sapp/ui/library/s_loading.dart';
+import 'package:sapp/ui/screens/show_screen/show_viewmodel.dart';
 import 'package:flutter_html/flutter_html.dart';
 
 class ShowScreen extends StatelessWidget {
@@ -13,10 +13,12 @@ class ShowScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     ShowViewModel model = Provider.of<ShowViewModel>(context);
     Size size = MediaQuery.of(context).size;
+    // bool isReady = model.show != null && model.show.id == model.showId;
 
     return SafeArea(
       child: Scaffold(
-          body: model.show != null ? buildBody(model, size) : LoadingWidget()),
+        body: buildBody(model, size),
+      ),
     );
   }
 

@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sapp/core/models/show_model.dart';
 import 'package:sapp/core/services/tv_maze_db.dart';
-import 'package:sapp/main/library/ass_loading.dart';
-import 'package:sapp/main/screens/home_screen/views/home_screen_list_view.dart';
+import 'package:sapp/ui/library/s_loading.dart';
+import 'package:sapp/ui/screens/home_screen/views/home_screen_list_view.dart';
 import 'package:sapp/service_lcoator.dart';
 
 class HomeViewModel extends ChangeNotifier {
@@ -12,9 +12,11 @@ class HomeViewModel extends ChangeNotifier {
   }
 
   //
-  // GENERAL STATE
+  // INJECTIONS
   TvMazeDB tvMazeDB = locator<TvMazeDB>();
 
+  //
+  // GENERAL STATE
   int _page = 0;
   List<ShowModel> _shows = [];
   List<ShowModel> get shows => _shows;
@@ -23,7 +25,7 @@ class HomeViewModel extends ChangeNotifier {
   int get viewsState => _viewsState;
 
   List<Widget> _views = [
-    LoadingWidget(),
+    SLoading(),
     HomeScreenListView(),
   ];
   List<Widget> get views => _views;
@@ -43,7 +45,7 @@ class HomeViewModel extends ChangeNotifier {
   ScrollController _listViewScroll;
   ScrollController get listViewScroll => _listViewScroll;
 
-  /// advance respecting original api's pagination
+  /// original api's pagination: 250max per page
   Future advance() async {
     _page += 1;
     _shows = [];
@@ -52,7 +54,7 @@ class HomeViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// back respecting original api's pagination
+  /// original api's pagination: 250max per page
   Future back() async {
     if (_page != 0) {
       _page -= 1;

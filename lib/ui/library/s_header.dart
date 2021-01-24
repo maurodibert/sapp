@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:sapp/core/constants.dart';
 
-class AssBar extends StatelessWidget {
-  final Widget child;
-  final double width;
-  AssBar({@required this.child, this.width});
-
+class SHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 72,
-      width: width ?? double.infinity,
+      width: 220,
+      height: 80,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+        child: Image.asset(
+          'assets/images/serious_iso_logo.png',
+          width: 300,
+        ),
+      ),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [kBottomMediumShadow],
@@ -18,7 +21,6 @@ class AssBar extends StatelessWidget {
           Radius.circular(kSmallRadius),
         ),
       ),
-      child: Center(child: child),
     );
   }
 }
