@@ -24,6 +24,7 @@ class ShowScreen extends StatelessWidget {
   Widget buildBody(ShowViewModel model, Size size) {
     return Hero(
       tag: 'tag - ${model.show.id}',
+      // added to prevent overflow in content
       child: Material(
         type: MaterialType.transparency,
         child: Stack(
@@ -55,6 +56,7 @@ class ShowScreen extends StatelessWidget {
 
   Widget buildMainTexts(ShowViewModel model) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -128,9 +130,7 @@ class ShowScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  k8Vertical,
                   for (EpisodeModel episode in model.episodes)
                     if (episode.season == season.number)
                       MaterialButton(
@@ -146,18 +146,14 @@ class ShowScreen extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              SizedBox(
-                                width: 8,
-                              ),
+                              k8Horizontal,
                               Text(episode.name,
                                   style: kP.copyWith(color: Colors.white)),
                             ],
                           ),
                         ),
                       ),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  k24Vertical,
                 ],
               ),
           ],

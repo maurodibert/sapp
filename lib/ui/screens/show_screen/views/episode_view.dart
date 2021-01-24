@@ -28,9 +28,7 @@ class EpisodeView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: 32,
-                  ),
+                  k32Vertical,
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Row(
@@ -69,9 +67,7 @@ class EpisodeView extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 8,
-                  ),
+                  k8Vertical,
                   if (model.episode.image != null)
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -92,9 +88,7 @@ class EpisodeView extends StatelessWidget {
                     ),
                   SeriousRichText(
                       data: model.episode.summary, color: Colors.black),
-                  SizedBox(
-                    height: 32,
-                  ),
+                  k32Vertical,
                 ],
               ),
             ),
