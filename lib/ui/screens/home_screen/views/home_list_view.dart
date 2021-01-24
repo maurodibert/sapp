@@ -22,10 +22,10 @@ class HomeListView extends StatelessWidget {
       children: [
         buildBody(context, model, showModel),
         Align(
-          alignment: Alignment.topCenter,
+          alignment: Alignment.topLeft,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
-            child: SHeader(),
+            child: SeriousHeader(),
           ),
         ),
         Align(

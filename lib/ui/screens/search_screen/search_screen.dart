@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:sapp/core/constants.dart';
 import 'package:sapp/core/models/show_model.dart';
 import 'package:sapp/ui/library/s_card.dart';
+import 'package:sapp/ui/library/s_header.dart';
 import 'package:sapp/ui/screens/search_screen/search_viewmodel.dart';
 import 'package:sapp/ui/screens/show_screen/show_screen.dart';
 import 'package:sapp/ui/screens/show_screen/show_viewmodel.dart';
@@ -15,19 +16,30 @@ class SearchScreen extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        body: Container(
-          color: Colors.black,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              k32Vertical,
-              buildForm(model),
-              if (model.shows != null && model.shows.length > 0) k24Vertical,
-              if (model.shows != null && model.shows.length > 0)
-                buildResult(context, model, showModel),
-            ],
+        body: Stack(children: [
+          Container(
+            color: Colors.black,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                buildForm(model),
+                if (model.shows != null && model.shows.length > 0) k24Vertical,
+                if (model.shows != null && model.shows.length > 0)
+                  buildResult(context, model, showModel),
+              ],
+            ),
           ),
-        ),
+          Align(
+            alignment: Alignment.topCenter,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+              child: GestureDetector(
+                onTap: () => Navigator.pop(context),
+                child: SeriousHeader(),
+              ),
+            ),
+          ),
+        ]),
       ),
     );
   }

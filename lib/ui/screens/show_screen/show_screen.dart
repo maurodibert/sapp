@@ -4,6 +4,7 @@ import 'package:sapp/core/constants.dart';
 import 'package:sapp/core/models/episode_model.dart';
 import 'package:sapp/core/models/season_model.dart';
 import 'package:sapp/ui/library/s_background.dart';
+import 'package:sapp/ui/library/s_header.dart';
 import 'package:sapp/ui/library/s_rich_text.dart';
 import 'package:sapp/ui/screens/show_screen/show_viewmodel.dart';
 import 'package:sapp/ui/screens/show_screen/views/episode_view.dart';
@@ -16,12 +17,12 @@ class ShowScreen extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        body: buildBody(model, size),
+        body: buildBody(context, model, size),
       ),
     );
   }
 
-  Widget buildBody(ShowViewModel model, Size size) {
+  Widget buildBody(BuildContext context, ShowViewModel model, Size size) {
     return Hero(
       tag: 'tag - ${model.show.id}',
       // added to prevent overflow in content
@@ -48,6 +49,16 @@ class ShowScreen extends StatelessWidget {
               ),
             ),
             EpisodeView(),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
+                child: GestureDetector(
+                  onTap: () => Navigator.pushNamed(context, '/'),
+                  child: SeriousHeader(),
+                ),
+              ),
+            ),
           ],
         ),
       ),
