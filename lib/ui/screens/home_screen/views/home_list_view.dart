@@ -8,7 +8,7 @@ import 'package:sapp/ui/screens/home_screen/home_viewmodel.dart';
 import 'package:sapp/ui/screens/show_screen/show_screen.dart';
 import 'package:sapp/ui/screens/show_screen/show_viewmodel.dart';
 
-class HomeScreenListView extends StatelessWidget {
+class HomeListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeViewModel model = Provider.of<HomeViewModel>(context);
@@ -52,13 +52,13 @@ Widget buildBody(
             await showModel.fetchShow(show.id);
             showModel.fetchEpisodes(show.id);
             showModel.fetchSeasons(show.id);
+            // used for manage transition's duration
             Navigator.push(
               context,
               PageRouteBuilder(
                   transitionDuration: Duration(milliseconds: 800),
                   pageBuilder: (_, __, ___) => ShowScreen()),
             );
-            // Navigator.pushNamed(context, '/show');
           },
           tag: 'tag - ${show.id}',
           image: show.image,

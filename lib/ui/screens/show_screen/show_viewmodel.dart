@@ -11,6 +11,8 @@ class ShowViewModel extends ChangeNotifier {
   // GENERAL STATE
   TvMazeDB tvMazeDB = locator<TvMazeDB>();
 
+  // important to ensure Hero animation
+  // not showing previous fetched show
   int _showId;
   int get showId => _showId;
   ShowModel _show;
