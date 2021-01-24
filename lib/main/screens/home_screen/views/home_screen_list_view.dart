@@ -26,25 +26,25 @@ Widget buildHeader(HomeViewModel model) {
   return Align(
       alignment: Alignment.topCenter,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(24, 48, 24, 0),
+        padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
         child: Container(
+          width: 220,
+          height: 80,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: Image.asset(
+              'assets/images/serious_iso_logo.png',
+              width: 300,
+            ),
+          ),
+          decoration: BoxDecoration(
             color: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    "Series App",
-                    style: kH1,
-                  ),
-                  Text(
-                    "A Serious Series App",
-                    style: kP,
-                  ),
-                ],
-              ),
-            )),
+            boxShadow: [kBottomMediumShadow],
+            borderRadius: BorderRadius.all(
+              Radius.circular(kSmallRadius),
+            ),
+          ),
+        ),
       ));
 }
 
@@ -121,10 +121,16 @@ Widget buildBottomNavBar(HomeViewModel model) {
               ),
             ),
             Expanded(
-              child: IconButton(
-                icon: Icon(Icons.search),
-                color: Colors.black,
-                onPressed: () => print('search pressed'),
+              child: Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color(0xFFFFC70D),
+                ),
+                child: IconButton(
+                  icon: Icon(Icons.search),
+                  color: Colors.black,
+                  onPressed: () => print('search pressed'),
+                ),
               ),
             ),
             Expanded(

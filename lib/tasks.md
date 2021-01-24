@@ -1,16 +1,24 @@
 # tasks
-- display specific show information
-xx display episodes by season
--- show episode info in Dialog
+- refactor & bugs
+-- no going home after clicked on show
 
 
 
 
 
+
+
+
+
+# backlog
 - search
 - apk working
-- pin & fingerprint with package
+- beautiful
+-- mini eggs as buttons
+-- splash
+-- animations
 - repo and readme
+- pin & fingerprint with package
 - favorites made simple
 
 

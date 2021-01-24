@@ -95,22 +95,24 @@ class ShowScreen extends StatelessWidget {
                   SizedBox(
                     height: 8,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Container(
-                      width: size.width - 48,
-                      height: 200,
-                      decoration: BoxDecoration(
-                        color: Colors.yellow,
-                        image: DecorationImage(
-                          image: NetworkImage(model.episode.image),
-                          colorFilter: ColorFilter.mode(
-                              Colors.black.withOpacity(0.8), BlendMode.dstATop),
-                          fit: BoxFit.cover,
+                  if (model.episode.image != null)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Container(
+                        width: size.width - 48,
+                        height: 200,
+                        decoration: BoxDecoration(
+                          color: Colors.yellow,
+                          image: DecorationImage(
+                            image: NetworkImage(model.episode.image),
+                            colorFilter: ColorFilter.mode(
+                                Colors.black.withOpacity(0.8),
+                                BlendMode.dstATop),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
-                  ),
                   htmlSummary,
                   SizedBox(
                     height: 32,

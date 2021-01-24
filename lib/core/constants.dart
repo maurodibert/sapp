@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 BoxShadow kBottomMediumShadow = BoxShadow(
   offset: Offset(0, 12),
   blurRadius: 15,
-  color: Colors.black12,
+  spreadRadius: 2,
+  color: Colors.black45,
 );
 
 double kBigRadius = 40;
