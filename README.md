@@ -1,4 +1,4 @@
-<p align="left"><img src="assets/images/serious_logo_white_contour.png" style="width:40px;" /></p>
+![Logo](assets/images/micro_logo.png)
 # Seri[ou]s
 An application for listing TV series, using the API provided by the TVMaze
 website.
