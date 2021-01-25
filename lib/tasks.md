@@ -6,7 +6,7 @@ xx egg header
 xx splash
 xx icon
 xx apk working
-- repo and readme
+xx repo and readme
 xx cómo se corre
 xx presentación de la estructura
 xx toma de decisiones específicas: validaciones, etc.
