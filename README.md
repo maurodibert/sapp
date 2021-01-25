@@ -9,7 +9,9 @@ website.
 ## How to Use 
 **Step 1:**
 Download or clone this repo by using the link below:
+
 ```
+https://github.com/maurodibert/sapp.git
 ```
 **Step 2:**
 Go to project root and execute the following command in console to get the required dependencies: 
@@ -21,7 +23,7 @@ Run the app
 ```
 flutter run
 ```
-**APK**
+**APK:**
 Just download and run in device
 ```
 build/app/outputs/flutter-apk/app-release.apk
