@@ -11,8 +11,10 @@ class SearchViewModel extends ChangeNotifier {
 
   //
   // GENERAL STATE
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  GlobalKey<FormState> get formKey => _formKey;
+
+  // Commented for unresolved bug: https://github.com/flutter/flutter/issues/16630
+  // final GlobalKey _formKey = GlobalKey(debugLabel: '_searchInput');
+  // GlobalKey get formKey => _formKey;
   TextEditingController _textFieldController = TextEditingController();
   TextEditingController get textFieldController => _textFieldController;
 

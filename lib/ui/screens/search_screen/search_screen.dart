@@ -47,7 +47,6 @@ class SearchScreen extends StatelessWidget {
   Widget buildForm(SearchViewModel model) {
     return Container(
       child: Form(
-        key: model.formKey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -86,10 +85,8 @@ class SearchScreen extends StatelessWidget {
                     return null;
                   },
                   onFieldSubmitted: (value) async {
-                    if (model.formKey.currentState.validate()) {
-                      await model.queryShows(model.textFieldController.text);
-                      model.textFieldController.clear();
-                    }
+                    await model.queryShows(model.textFieldController.text);
+                    model.textFieldController.clear();
                   }),
             )
           ],

@@ -62,7 +62,7 @@ class ShowScreen extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
                 child: GestureDetector(
                   onTap: () {
-                    // model.clean();
+                    model.clean();
                     return Navigator.pushNamed(context, '/');
                   },
                   child: SeriousHeader(),

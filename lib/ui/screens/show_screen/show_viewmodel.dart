@@ -24,6 +24,8 @@ class ShowViewModel extends ChangeNotifier {
 
   void clean() {
     _show = null;
+    _episodes = null;
+    _seasons = null;
   }
 
   //

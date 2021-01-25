@@ -31,19 +31,38 @@ class EpisodeView extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Row(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
-                          model.episode.name,
-                          style: kP.copyWith(
-                            color: Colors.black87,
-                            fontWeight: FontWeight.bold,
+                        Flexible(
+                          child: Text(
+                            model.episode.name,
+                            style: kP.copyWith(
+                              color: Colors.black87,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                         Spacer(),
-                        IconButton(
-                          icon: Icon(Icons.clear),
-                          color: Colors.black,
-                          onPressed: () => model.toggleDetails(),
+                        Container(
+                          child: Stack(children: [
+                            Padding(
+                              padding: const EdgeInsets.all(4),
+                              child: Icon(
+                                Icons.clear,
+                                color: Colors.white,
+                                size: 40,
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.center,
+                              child: IconButton(
+                                padding: EdgeInsets.all(2),
+                                icon: Icon(Icons.clear),
+                                color: Colors.black,
+                                onPressed: () => model.toggleDetails(),
+                              ),
+                            ),
+                          ]),
                         ),
                       ],
                     ),
@@ -75,6 +94,9 @@ class EpisodeView extends StatelessWidget {
                         height: 200,
                         decoration: BoxDecoration(
                           color: kYellow,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(kSmallRadius),
+                          ),
                           image: DecorationImage(
                             image: NetworkImage(model.episode.image),
                             colorFilter: ColorFilter.mode(
