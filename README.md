@@ -19,7 +19,7 @@ Run the app
 ```
 flutter run
 ```
-**APK**
+**APK:**
 Just download and run in device
 ```
 build/app/outputs/flutter-apk/app-release.apk
