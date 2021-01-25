@@ -29,7 +29,7 @@ Just download and run in device
 build/app/outputs/flutter-apk/app-release.apk
 ```
 
-## :wrench: Libraries & Tools Used
+## :wrench: Libraries & Tools
 * Provider
 * Get It, for dependency injection
 * Flutter HTML for rich HTML text
