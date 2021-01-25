@@ -55,7 +55,9 @@ class ShowScreen extends StatelessWidget {
             ),
             EpisodeView(),
             Align(
-              alignment: Alignment.bottomRight,
+              alignment: model.isDetailsVisible
+                  ? Alignment.bottomCenter
+                  : Alignment.bottomRight,
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
                 child: GestureDetector(

@@ -77,7 +77,7 @@ class SearchScreen extends StatelessWidget {
                       )),
                   style: kP.copyWith(
                       fontSize: 24,
-                      color: kOrgange,
+                      color: kOrange,
                       fontStyle: FontStyle.normal),
                   validator: (value) {
                     if (value.isEmpty) {

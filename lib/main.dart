@@ -35,7 +35,7 @@ class SeriousApp extends StatelessWidget {
         initialRoute: '/',
         theme: ThemeData(
           primaryColor: kYellow,
-          accentColor: kOrgange,
+          accentColor: kOrange,
           cursorColor: kYellow,
           focusColor: kYellow,
         ),

@@ -15,12 +15,11 @@ class EpisodeView extends StatelessWidget {
         // hiding details view
         left: model.isDetailsVisible ? 20 : -size.width,
         top: model.isDetailsVisible ? 0 : -size.height,
-        child: AnimatedContainer(
-          duration: Duration(milliseconds: 500),
-          curve: Curves.easeInOut,
+        child: Container(
           width: size.width - 40,
+          height: size.height,
           // height: size.height,
-          color: Colors.yellow,
+          color: kYellow.withOpacity(0.95),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
             child: SingleChildScrollView(
@@ -75,7 +74,7 @@ class EpisodeView extends StatelessWidget {
                         width: size.width - 48,
                         height: 200,
                         decoration: BoxDecoration(
-                          color: Colors.yellow,
+                          color: kYellow,
                           image: DecorationImage(
                             image: NetworkImage(model.episode.image),
                             colorFilter: ColorFilter.mode(
