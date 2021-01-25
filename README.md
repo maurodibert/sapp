@@ -55,5 +55,4 @@ will make for devs, life much more comfortable.
 ## Decisions and considerations
 **Why those extra features**: I've decided to the *splash screen* and *the icons* as extra features, not following the challenge prioritization because I couldn't devote any more than 20 hours in total. In the end, both elements are a fast thing to develop and with a high-value output, letting me give a feeling of a completed app.
 
-**Time devoted to UI/UX basic design**: I think one of the most important aspects of an app is the look and feeling; it's what makes an user, connect with the app and wanting to stay more and come back. Since I had a lot of previous technical background in creative arts, I use them as a way of liberate and decompress.
-
+**Time devoted to UI/UX basic design**: One of the most critical aspects of an app is the look and feel; it makes a user connect with the app and want to stay and come back. Since I have had many previous technical backgrounds in creative arts, I use them to liberate and decompress.
