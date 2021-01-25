@@ -1,3 +1,4 @@
+<p align="left"><img src="assets/images/serious_logo_white_contour.png" style="width:40px;" /></p>
 # Seri[ou]s
 An application for listing TV series, using the API provided by the TVMaze
 website.
@@ -20,12 +21,12 @@ Run the app
 flutter run
 ```
 
-## Libraries & Tools Used
+## :wrench: Libraries & Tools Used
 * Provider
 * Get It, for dependency injection
 * Flutter HTML for rich HTML text
 
-## Structure
+## :mag: Structure
 With the separation of concerns in mind, I've built the application applying an MVVM architectural pattern, following the next folder structure:
 ```
 lib
@@ -47,13 +48,12 @@ from scratch, perhaps, could be a little bit cumbersome for an app this small, b
 will make for devs, life much more comfortable. 
 
 
-## Extra Features
+## :gift: Extra Features
 * UI - UX Design
 * Splash Screen
 * Icons
 
-## Decisions and considerations
+## :point_up: Decisions and considerations
 **Why those extra features**: I've decided to the *splash screen* and *the icons* as extra features, not following the challenge prioritization because I couldn't devote any more than 20 hours in total. In the end, both elements are a fast thing to develop and with a high-value output, letting me give a feeling of a completed app.
 
-**Time devoted to UI/UX basic design**: I think one of the most important aspects of an app is the look and feeling; it's what makes an user, connect with the app and wanting to stay more and come back. Since I had a lot of previous technical background in creative arts, I use them as a way of liberate and decompress.
-
+**Time devoted to UI/UX basic design**: One of the most critical aspects of an app is the look and feel; it makes a user connect with the app and want to stay and come back. Since I have had many previous technical backgrounds in creative arts, I use them to liberate and decompress.
