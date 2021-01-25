@@ -3,6 +3,8 @@
 An application for listing TV series, using the API provided by the TVMaze
 website.
 
+![demo](assets/gifs/serious_app_demo.gif)
+
 
 ## How to Use 
 **Step 1:**
@@ -51,7 +53,6 @@ At the same time, the code is categorized to make the maintenance easier and ple
 from scratch, perhaps, could be a little bit cumbersome for an app this small, but as soon as it gets bigger
 will make for devs, life much more comfortable. 
 
-
 ## :gift: Extra Features
 * UI - UX Design
 * Splash Screen
@@ -62,5 +63,4 @@ will make for devs, life much more comfortable.
 
 **Time devoted to UI/UX basic design**: One of the most critical aspects of an app is the look and feel; it makes a user connect with the app and want to stay and come back. Since I have had many previous technical backgrounds in creative arts, I use them to liberate and decompress.
 
-**Closing the concept - future development**:
-Some parts of the app should have animations, like the navbars, transition to details, buttons, etc., but the egg always will look, almost without moving, looking at you straight, seriously.
+**Closing the concept - future development**: Some parts of the app should have animations, like the navbars, transition to details, buttons, etc., but the egg always will look, almost without moving, looking at you straight, seriously.
