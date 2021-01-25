@@ -19,6 +19,11 @@ Run the app
 ```
 flutter run
 ```
+**APK**
+Just download and run in device
+```
+build/app/outputs/flutter-apk/app-release.apk
+```
 
 ## :wrench: Libraries & Tools Used
 * Provider
