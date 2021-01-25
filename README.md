@@ -26,7 +26,7 @@ flutter run
 **APK:**
 Just download and run in device
 ```
-build/app/outputs/flutter-apk/app-release.apk
+final_builds/app-release.apk
 ```
 
 ## :wrench: Libraries & Tools
