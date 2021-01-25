@@ -117,12 +117,13 @@ class SearchScreen extends StatelessWidget {
                   showModel.fetchEpisodes(show.id);
                   showModel.fetchSeasons(show.id);
                   // used for manage transition's duration
-                  Navigator.push(
+                  await Navigator.push(
                     context,
                     PageRouteBuilder(
                         transitionDuration: Duration(milliseconds: 800),
                         pageBuilder: (_, __, ___) => ShowScreen()),
                   );
+                  model.cleanSearch();
                 },
                 tag: 'tag - ${show.id}',
                 image: show.image,

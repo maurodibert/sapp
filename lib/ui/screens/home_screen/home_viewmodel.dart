@@ -25,7 +25,7 @@ class HomeViewModel extends ChangeNotifier {
   int get viewsState => _viewsState;
 
   List<Widget> _views = [
-    SLoading(),
+    SeriousLoading(),
     HomeListView(),
   ];
   List<Widget> get views => _views;

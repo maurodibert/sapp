@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:sapp/core/constants.dart';
 
-class SLoading extends StatelessWidget {
+class SeriousLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -5,6 +5,7 @@ import 'package:sapp/core/models/episode_model.dart';
 import 'package:sapp/core/models/season_model.dart';
 import 'package:sapp/ui/library/s_background.dart';
 import 'package:sapp/ui/library/s_header.dart';
+import 'package:sapp/ui/library/s_loading.dart';
 import 'package:sapp/ui/library/s_rich_text.dart';
 import 'package:sapp/ui/screens/show_screen/show_viewmodel.dart';
 import 'package:sapp/ui/screens/show_screen/views/episode_view.dart';
@@ -14,10 +15,14 @@ class ShowScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     ShowViewModel model = Provider.of<ShowViewModel>(context);
     Size size = MediaQuery.of(context).size;
+    bool isReady = model.show != null &&
+        model.seasons != null &&
+        model.episodes != null &&
+        model.show.id == model.showId;
 
     return SafeArea(
       child: Scaffold(
-        body: buildBody(context, model, size),
+        body: isReady ? buildBody(context, model, size) : SeriousLoading(),
       ),
     );
   }
@@ -54,7 +59,10 @@ class ShowScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
                 child: GestureDetector(
-                  onTap: () => Navigator.pushNamed(context, '/'),
+                  onTap: () {
+                    // model.clean();
+                    return Navigator.pushNamed(context, '/');
+                  },
                   child: SeriousHeader(),
                 ),
               ),

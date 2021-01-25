@@ -55,7 +55,7 @@ Widget buildBody(
               // important to ensure Hero animation
               // not showing previous fetched show
               showModel.setShowId(show.id);
-              await showModel.fetchShow(show.id);
+              showModel.fetchShow(show.id);
               showModel.fetchEpisodes(show.id);
               showModel.fetchSeasons(show.id);
               // used for manage transition's duration
