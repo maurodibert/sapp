@@ -22,6 +22,12 @@ class ShowViewModel extends ChangeNotifier {
   List<SeasonModel> _seasons = [];
   List<SeasonModel> get seasons => _seasons;
 
+  void clean() {
+    _show = null;
+    _episodes = null;
+    _seasons = null;
+  }
+
   //
   // EPISODE DETAILS
   bool _isDetailsVisible = false;
@@ -37,7 +43,7 @@ class ShowViewModel extends ChangeNotifier {
 
   void setShowId(int id) {
     _showId = id;
-    notifyListeners();
+    // notifyListeners();
   }
 
   //

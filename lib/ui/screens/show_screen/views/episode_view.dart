@@ -15,12 +15,11 @@ class EpisodeView extends StatelessWidget {
         // hiding details view
         left: model.isDetailsVisible ? 20 : -size.width,
         top: model.isDetailsVisible ? 0 : -size.height,
-        child: AnimatedContainer(
-          duration: Duration(milliseconds: 500),
-          curve: Curves.easeInOut,
+        child: Container(
           width: size.width - 40,
+          height: size.height,
           // height: size.height,
-          color: Colors.yellow,
+          color: kYellow.withOpacity(0.95),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
             child: SingleChildScrollView(
@@ -32,19 +31,38 @@ class EpisodeView extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Row(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
-                          model.episode.name,
-                          style: kP.copyWith(
-                            color: Colors.black87,
-                            fontWeight: FontWeight.bold,
+                        Flexible(
+                          child: Text(
+                            model.episode.name,
+                            style: kP.copyWith(
+                              color: Colors.black87,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                         Spacer(),
-                        IconButton(
-                          icon: Icon(Icons.clear),
-                          color: Colors.black,
-                          onPressed: () => model.toggleDetails(),
+                        Container(
+                          child: Stack(children: [
+                            Padding(
+                              padding: const EdgeInsets.all(4),
+                              child: Icon(
+                                Icons.clear,
+                                color: Colors.white,
+                                size: 40,
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.center,
+                              child: IconButton(
+                                padding: EdgeInsets.all(2),
+                                icon: Icon(Icons.clear),
+                                color: Colors.black,
+                                onPressed: () => model.toggleDetails(),
+                              ),
+                            ),
+                          ]),
                         ),
                       ],
                     ),
@@ -75,7 +93,10 @@ class EpisodeView extends StatelessWidget {
                         width: size.width - 48,
                         height: 200,
                         decoration: BoxDecoration(
-                          color: Colors.yellow,
+                          color: kYellow,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(kSmallRadius),
+                          ),
                           image: DecorationImage(
                             image: NetworkImage(model.episode.image),
                             colorFilter: ColorFilter.mode(

@@ -47,7 +47,6 @@ class SearchScreen extends StatelessWidget {
   Widget buildForm(SearchViewModel model) {
     return Container(
       child: Form(
-        key: model.formKey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -77,7 +76,7 @@ class SearchScreen extends StatelessWidget {
                       )),
                   style: kP.copyWith(
                       fontSize: 24,
-                      color: kOrgange,
+                      color: kOrange,
                       fontStyle: FontStyle.normal),
                   validator: (value) {
                     if (value.isEmpty) {
@@ -86,10 +85,8 @@ class SearchScreen extends StatelessWidget {
                     return null;
                   },
                   onFieldSubmitted: (value) async {
-                    if (model.formKey.currentState.validate()) {
-                      await model.queryShows(model.textFieldController.text);
-                      model.textFieldController.clear();
-                    }
+                    await model.queryShows(model.textFieldController.text);
+                    model.textFieldController.clear();
                   }),
             )
           ],
@@ -117,12 +114,13 @@ class SearchScreen extends StatelessWidget {
                   showModel.fetchEpisodes(show.id);
                   showModel.fetchSeasons(show.id);
                   // used for manage transition's duration
-                  Navigator.push(
+                  await Navigator.push(
                     context,
                     PageRouteBuilder(
                         transitionDuration: Duration(milliseconds: 800),
                         pageBuilder: (_, __, ___) => ShowScreen()),
                   );
+                  model.cleanSearch();
                 },
                 tag: 'tag - ${show.id}',
                 image: show.image,
